@@ -10,7 +10,7 @@ app.use(bp.json());
 
 
 const mongoose=require('mongoose');
-mongoose.connect("mongodb://127.0.0.1:27017/Landing_Page_Data");
+mongoose.connect("mongodb+srv://mongo123:mongo123@cluster0.az0qhnl.mongodb.net/?retryWrites=true&w=majority");
 
 const {Model}=require("./DB/DB1.js");
 
