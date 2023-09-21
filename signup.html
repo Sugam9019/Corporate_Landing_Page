@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="./signup.css">
+</head>
+<body>
+    
+   
+      <div class="container">
+        <div class="title">Registration</div>
+        <div class="content">
+          <form >
+            <div class="user-details">
+              <div class="input-box">
+                <span class="details">Full Name</span>
+                <input type="text" placeholder="Enter your name" name="name" required id="F-name" autocomplete="off">
+              </div>
+              <div class="input-box">
+                <span class="details">Username</span>
+                <input type="text" placeholder="Enter your username" required name="u_name" id="U-name" autocomplete="off">
+              </div>
+              <div class="input-box">
+                <span class="details">Email</span>
+                <input type="email" placeholder="Enter your email" required name="email" id="mail" autocomplete="off">
+              </div>
+              <div class="input-box">
+                <span class="details">Phone Number</span>
+                <input type="text" placeholder="Enter your number" required name="phon" id="num" autocomplete="off">
+              </div>
+              <div class="input-box">
+                <span class="details">Password</span>
+                <input type="password" placeholder="Enter your password" required name="pass" id="pass" autocomplete="off">
+              </div>
+              <div class="input-box">
+                <span class="details">Confirm Password</span>
+                <input type="password" placeholder="Confirm your password" required name="cp" id="cp" autocomplete="off">
+              </div>
+            </div>
+            <div class="gender-details" >
+              <input type="radio" name="gender" id="dot-1">
+              <input type="radio" name="gender" id="dot-2">
+              <input type="radio" name="gender" id="dot-3">
+              <span class="gender-title">Gender</span>
+              <div class="category">
+                <label for="dot-1">
+                <span class="dot one"></span>
+                <span class="gender">Male</span>
+              </label>
+              <label for="dot-2">
+                <span class="dot two"></span>
+                <span class="gender">Female</span>
+              </label>
+              <label for="dot-3">
+                <span class="dot three"></span>
+                <span class="gender">Prefer not to say</span>
+                </label>
+              </div>
+            </div>
+            <div class="button">
+              <input type="submit" value="Signup" onclick="press(event)">
+             
+            </div>
+
+            <a id="lgin" href="login.html" target="_self">Already have an account ? <strong>Login</strong></a>
+          </form>
+
+        </div>
+      </div>
+      
+      <br/>
+      
+      
+     
+    <script type="text/javascript">
+
+      const press=async()=>{
+
+      
+        const F_name=document.getElementById("F-name").value;
+        const U_name=document.getElementById("U-name").value;
+        const mail=document.getElementById("mail").value;
+        const num=document.getElementById("num").value;
+        const pass=document.getElementById("pass").value;
+
+        window.location.href="index.html?name="+F_name;
+
+          const request=await fetch("http://localhost:8000/register",{
+              method:'POST',
+              body:JSON.stringify({"F_name":F_name,"U_name":U_name,"Mail":mail,"P_num":num,"pass":pass}),
+              headers:{
+                  'Content-Type':'application/json'
+              }
+          })
+
+          const response=await request.json();
+          console.log(response.Status);
+          
+}
+      
+  </script>
+    
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="press()">click</button>
+
+    <script>
+
+        const press=async()=>{
+            const request=await fetch("http://localhost:8000/register",{
+                method:'POST',
+                body:JSON.stringify({"Name":"Sugam","USN":"123abc"}),
+                headers:{
+                    'Content-Type':'application/json'
+                }
+            })
+
+            const response=await request.json();
+            if(response)
+                alert(response.Status);
+            else
+                alert(">>>");
+}
+        
+    </script>
+</body>
+</html>
